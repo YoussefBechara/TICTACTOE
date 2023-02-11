@@ -1,0 +1,182 @@
+import random
+board = ['-', '-', '-',
+         '-', '-', '-',
+         '-', '-', '-']
+currentplayer = "X"
+winner = None
+gameRunning = True
+while True:
+    def printboard():
+        print(board[0], '|', board[1], '|', board[2])
+        print(board[3], '|', board[4], '|', board[5])
+        print(board[6], '|', board[7], '|', board[8])
+
+
+    def playerinput():
+        inpout = 'h'
+        while True:
+            inpout = int(input('Choose a number between 1 and 9: '))
+            if (inpout >= 1) and (inpout <= 9) and (board[inpout - 1] == '-'):
+                board.pop(inpout - 1)
+                board.insert(inpout - 1, 'X')
+                break
+            else:
+                print('Sorry! Your spot has been already taken or you inserted an incorrect number/letter')
+
+
+    def win_check():
+        if (board[0] == 'X') and (board[1] == 'X') and (board[2] == 'X') or (board[3] == 'X') and (board[4] == 'X') and (board[5] == 'X') or (board[6] == 'X') and (board[7] == 'X') and (board[8] == 'X'):
+            print('Player X has won the game')
+            quit()
+        if (board[0] == 'O') and (board[1] == 'O') and (board[2] == 'O') or (board[3] == 'O') and (board[4] == 'O') and (board[5] == 'O') or (board[6] == 'O') and (board[7] == 'O') and (board[8] == 'O'):
+            print('Player O has won the game')
+            quit()
+        if (board[0] == 'X') and (board[3] == 'X') and (board[6] == 'X') or (board[1] == 'X') and (board[4] == 'X') and (board[7] == 'X') or (board[2] == 'X') and (board[5] == 'X') and (board[8] == 'X'):
+            print('Player X has won the game')
+            quit()
+        if (board[0] == 'O') and (board[3] == 'O') and (board[6] == 'O') or (board[1] == 'O') and (board[4] == 'O') and (board[7] == 'O') or (board[2] == 'O') and (board[5] == 'O') and (board[8] == 'O'):
+            print('Player O has won the game')
+            quit()
+        if (board[0] == 'X') and (board[4] == 'X') and (board[8] == 'X') or (board[2] == 'X') and (board[4] == 'X') and (board[6] == 'X'):
+            print('Player X has won the game')
+            quit()
+        if (board[0] == 'O') and (board[4] == 'O') and (board[8] == 'O') or (board[2] == 'O') and (board[4] == 'O') and (board[6] == 'O'):
+            print('Player O has won the game')
+            quit()
+        if '-' not in board:
+            print('Tie!')
+            quit()
+
+
+    def computer_turn():
+        computer = random.randint(0, 8)
+        while True:
+            if (board[0] == 'X') and (board[1] == 'X'):
+                board.pop(2)
+                board.insert(2, 'O')
+                break
+            elif (board[1] == 'X') and (board[2] == 'X'):
+                board.pop(0)
+                board.insert(0, 'O')
+                break
+            elif (board[2] == 'X') and (board[0] == 'X'):
+                board.pop(1)
+                board.insert(1, 'O')
+                break
+            elif (board[3] == 'X') and (board[4] == 'X'):
+                board.pop(5)
+                board.insert(5, 'O')
+                break
+            elif (board[5] == 'X') and (board[4] == 'X'):
+                board.pop(3)
+                board.insert(3, 'O')
+                break
+            elif (board[5] == 'X') and (board[3] == 'X'):
+                board.pop(4)
+                board.insert(4, 'O')
+                break
+            elif (board[6] == 'X') and (board[7] == 'X'):
+                board.pop(8)
+                board.insert(8, 'O')
+                break
+            elif (board[8] == 'X') and (board[7] == 'X'):
+                board.pop(6)
+                board.insert(6, 'O')
+                break
+            elif (board[6] == 'X') and (board[8] == 'X'):
+                board.pop(7)
+                board.insert(7, 'O')
+                break
+            elif (board[0] == 'X') and (board[3] == 'X'):
+                board.pop(6)
+                board.insert(6, 'O')
+                break
+            elif (board[0] == 'X') and (board[6] == 'X'):
+                board.pop(3)
+                board.insert(3, 'O')
+                break
+            elif (board[6] == 'X') and (board[3] == 'X'):
+                board.pop(0)
+                board.insert(0, 'O')
+                break
+            elif (board[1] == 'X') and (board[4] == 'X'):
+                board.pop(7)
+                board.insert(7, 'O')
+                break
+            elif (board[7] == 'X') and (board[1] == 'X'):
+                board.pop(4)
+                board.insert(4, 'O')
+                break
+            elif (board[4] == 'X') and (board[7] == 'X'):
+                board.pop(1)
+                board.insert(1, 'O')
+                break
+            elif (board[2] == 'X') and (board[8] == 'X'):
+                board.pop(5)
+                board.insert(5, 'O')
+                break
+            elif (board[2] == 'X') and (board[5] == 'X'):
+                board.pop(8)
+                board.insert(8, 'O')
+                break
+            elif (board[5] == 'X') and (board[8] == 'X'):
+                board.pop(2)
+                board.insert(2, 'O')
+                break
+            elif (board[0] == 'X') and (board[4] == 'X'):
+                board.pop(8)
+                board.insert(8, 'O')
+                break
+            elif (board[0] == 'X') and (board[8] == 'X'):
+                board.pop(4)
+                board.insert(4, 'O')
+                break
+            elif (board[4] == 'X') and (board[8] == 'X'):
+                board.pop(0)
+                board.insert(0, 'O')
+                break
+            elif (board[2] == 'X') and (board[4] == 'X'):
+                board.pop(6)
+                board.insert(6, 'O')
+                break
+            elif (board[4] == 'X') and (board[6] == 'X'):
+                board.pop(2)
+                board.insert(2, 'O')
+                break
+            elif (board[2] == 'X') and (board[6] == 'X'):
+                board.pop(4)
+                board.insert(4, 'O')
+                break
+            elif board[0] == '-':
+                board.pop(0)
+                board.insert(0, 'O')
+                break
+            elif board[2] == '-':
+                board.pop(2)
+                board.insert(2, 'O')
+                break
+            elif board[6] == '-':
+                board.pop(6)
+                board.insert(6, 'O')
+                break
+            elif board[8] == '-':
+                board.pop(8)
+                board.insert(8, 'O')
+                break
+            elif board[4] == '-':
+                board.pop(4)
+                board.insert(4, 'O')
+                break
+            elif board[computer] == '-':
+                board.pop(computer)
+                board.insert(computer, 'O')
+                break
+
+    printboard()
+    playerinput()
+    win_check()
+    computer_turn()
+    win_check()
+
+
+
